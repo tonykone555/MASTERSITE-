@@ -9,6 +9,11 @@ window.SITE_CONFIG={
   poster:"https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200"
 };
 
+const planSheet=document.createElement('link');
+planSheet.rel='stylesheet';
+planSheet.href='plan-overlay.css?v=frameless-plan-1';
+document.head.appendChild(planSheet);
+
 const surfaceSheet=document.createElement('link');
 surfaceSheet.rel='stylesheet';
 surfaceSheet.href='surface-sections.css?v=floating-slabs-1';
