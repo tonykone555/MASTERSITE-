@@ -11,11 +11,11 @@ window.SITE_CONFIG={
 
 const surfaceSheet=document.createElement('link');
 surfaceSheet.rel='stylesheet';
-surfaceSheet.href='surface-sections.css';
+surfaceSheet.href='surface-sections.css?v=floating-slabs-1';
 document.head.appendChild(surfaceSheet);
 
 setTimeout(()=>{
   const surfaceScript=document.createElement('script');
-  surfaceScript.src='surface-sections.js';
+  surfaceScript.src='surface-sections.js?v=floating-slabs-1';
   document.body.appendChild(surfaceScript);
 },0);
