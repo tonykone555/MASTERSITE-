@@ -1,0 +1,40 @@
+/* Frame-free architectural plan overlay */
+.floorplan-nav{
+  left:22px;
+  bottom:22px;
+  width:248px;
+  padding:0!important;
+  border:0!important;
+  outline:0!important;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
+  color:#fff;
+  mix-blend-mode:difference;
+}
+.floorplan-nav::before,.floorplan-nav::after{display:none!important}
+.plan-canvas{
+  border:0!important;
+  background:transparent!important;
+}
+.plan-canvas svg{filter:none}
+.plan-meta{margin-bottom:5px}
+.plan-progress{padding-top:5px}
+.plan-progress>div{background:rgba(255,255,255,.28)}
+.floorplan-nav.is-near-contact{opacity:.5}
+
+@media(max-width:900px){
+  .floorplan-nav{
+    left:12px;
+    right:auto;
+    bottom:12px;
+    width:min(220px,58vw);
+    padding:0!important;
+    background:transparent!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+  .plan-canvas{height:72px;border:0!important}
+  .plan-meta,.plan-progress{font-size:5.5px}
+}
