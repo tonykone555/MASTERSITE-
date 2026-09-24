@@ -10,6 +10,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<svg class="svg-sprite" aria-hidden="true">
+  <symbol id="arrow-right" viewBox="0 0 48 20"><path d="M1 10h43M36 2l8 8-8 8"/></symbol>
+  <symbol id="arrow-down" viewBox="0 0 20 48"><path d="M10 1v43M2 36l8 8 8-8"/></symbol>
+  <symbol id="arrow-up-right" viewBox="0 0 30 30"><path d="M3 27 27 3M10 3h17v17"/></symbol>
+</svg>
+
 <main class="site">
   <header class="nav">
     <a class="brand" href="#top"><strong data-company>AURELIA</strong><small>INTERIOR ARCHITECTURE</small></a>
@@ -18,34 +24,93 @@
   </header>
 
   <section class="hero" id="top">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200" src="https://videos.pexels.com/video-files/7239168/7239168-uhd_2160_3840_25fps.mp4"></video>
-    <div class="hero-blur" style="background:url('https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200') center/cover" aria-hidden="true"></div><div class="hero-shade"></div>
-    <span class="eyebrow">RESIDENTIAL · HOSPITALITY · BESPOKE</span><span class="hero-index">01 — 05</span>
-    <div class="hero-copy"><small>INTERIORS / 2026</small><h1 data-headline>Spaces made<br>to be felt.</h1><div class="hero-bottom"><p data-intro>Residential interiors shaped through light, material and movement.</p><a class="enter" href="#experience"><span>Enter the space</span><i>↓</i></a></div></div>
-  </section>
-
-  <section class="approach" id="studio"><span class="kicker">A / APPROACH</span><p class="statement">We design interiors as <em>experiences</em> — composed through proportion, restraint and the way a room reveals itself in motion.</p><div class="approach-grid"><p>Every project begins with atmosphere. We reduce noise, amplify material and let light create the rhythm.</p><p>The result is not a style applied to a space. It is a space that feels inevitable to the people who live inside it.</p></div></section>
-
-  <section class="tour" id="experience">
-    <div class="tour-sticky">
-      <video id="tourAmbient" class="tour-ambient" muted playsinline preload="metadata" src="https://videos.pexels.com/video-files/7239168/7239168-uhd_2160_3840_25fps.mp4"></video>
-      <video id="tourVideo" class="tour-video" muted playsinline preload="auto" poster="https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200" src="https://videos.pexels.com/video-files/7239168/7239168-uhd_2160_3840_25fps.mp4"></video>
-      <div class="tour-vignette"></div><div class="tour-grid"></div>
-      <div class="tour-top"><span>SCROLL-CONTROLLED TOUR</span><span>SCROLL TO EXPLORE</span></div>
-      <div class="chapter is-active" data-chapter="0"><span>01 / ARRIVAL</span><h2>Enter the atmosphere</h2></div>
-      <div class="chapter" data-chapter="1"><span>02 / MATERIAL</span><h2>Move through texture</h2></div>
-      <div class="chapter" data-chapter="2"><span>03 / DETAIL</span><h2>Notice what stays</h2></div>
-      <div class="tour-rail"><span>SCROLL TO MOVE</span><div class="track"><div id="tourProgress" class="progress"></div></div><span>KEEP GOING</span></div>
+    <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200"></video>
+    <div class="hero-blur" aria-hidden="true"></div><div class="hero-shade"></div>
+    <span class="eyebrow">RESIDENTIAL · HOSPITALITY · BESPOKE</span><span class="hero-index">01 — 08</span>
+    <div class="hero-copy">
+      <small>INTERIORS / 2026</small>
+      <h1 data-headline>Spaces made<br>to be felt.</h1>
+      <div class="hero-bottom">
+        <p data-intro>Residential interiors shaped through light, material and movement.</p>
+        <a class="enter" href="#experience"><span>Enter the space</span><span class="round-arrow"><svg><use href="#arrow-down"/></svg></span></a>
+      </div>
     </div>
   </section>
 
-  <section class="work" id="projects"><div class="work-head"><span>B / SELECTED WORK</span><h2>Projects that reward<br>a closer look.</h2><p>A selection of spaces shaped around light, restraint and the rituals of everyday life.</p></div><div class="project-grid" id="projectGrid"></div></section>
+  <section class="approach" id="studio">
+    <span class="kicker">A / APPROACH</span>
+    <p class="statement">We design interiors as <em>experiences</em> — composed through proportion, restraint and the way a room reveals itself in motion.</p>
+    <div class="approach-grid"><p>Every project begins with atmosphere. We reduce noise, amplify material and let light create the rhythm.</p><p>The result is not a style applied to a space. It is a space that feels inevitable to the people who live inside it.</p></div>
+  </section>
 
-  <section class="services"><span class="kicker">C / SERVICES</span><div class="service-list"><div class="service"><span>01</span><h3>INTERIOR ARCHITECTURE</h3><i>↗</i></div><div class="service"><span>02</span><h3>SPATIAL PLANNING</h3><i>↗</i></div><div class="service"><span>03</span><h3>BESPOKE JOINERY</h3><i>↗</i></div><div class="service"><span>04</span><h3>MATERIAL DIRECTION</h3><i>↗</i></div></div></section>
+  <section class="tour" id="experience">
+    <div class="tour-sticky">
+      <div class="tour-ambient" aria-hidden="true"></div>
+      <video id="tourVideo" class="tour-video" muted playsinline preload="auto" poster="https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200"></video>
+      <div class="tour-vignette"></div><div class="tour-grid"></div>
+      <div class="tour-top"><span>SCROLL-CONTROLLED TOUR</span><span id="tourStatus">LOADING MOVEMENT</span></div>
+      <div class="chapter is-active" data-chapter="0"><span>01 / ARRIVAL</span><h2>Enter the atmosphere</h2></div>
+      <div class="chapter" data-chapter="1"><span>02 / MATERIAL</span><h2>Move through texture</h2></div>
+      <div class="chapter" data-chapter="2"><span>03 / DETAIL</span><h2>Notice what stays</h2></div>
+      <div class="chapter" data-chapter="3"><span>04 / LIGHT</span><h2>Follow the light</h2></div>
+      <div class="tour-rail"><span>SCROLL TO MOVE</span><div class="track"><div id="tourProgress" class="progress"></div></div><svg class="rail-arrow"><use href="#arrow-right"/></svg></div>
+    </div>
+  </section>
 
-  <section class="future"><div class="future-badge">NEXT / SCREEN</div><p>The web is becoming more immersive.</p><h2>Digital experiences that stand out now — and feel ready for what comes next.</h2><small>LARGER DISPLAYS · FOLDABLES · SPATIAL INTERFACES</small></section>
+  <section class="material-section">
+    <div class="section-label">B / MATERIAL LANGUAGE</div>
+    <div class="material-intro"><h2>Quiet materials.<br>Strong presence.</h2><p>Stone, oak, metal and soft textiles are composed with enough restraint to let the architecture breathe.</p></div>
+    <div class="material-grid">
+      <article class="material-card material-card-large"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1600&q=82" alt="Warm stone interior"><span>01</span><h3>Natural stone</h3></article>
+      <article class="material-card"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1400&q=82" alt="Wood detail"><span>02</span><h3>Oak & timber</h3></article>
+      <article class="material-card"><img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=1400&q=82" alt="Soft neutral interior"><span>03</span><h3>Soft tactility</h3></article>
+    </div>
+  </section>
 
-  <section class="contact" id="contact"><div class="contact-top"><span>D / START A PROJECT</span><span data-location>LONDON · PARIS · MARBELLA</span></div><h2>Make your first<br>impression <em>felt.</em></h2><a class="email" data-email href="mailto:studio@aurelia.design"><span>studio@aurelia.design</span><i>→</i></a><footer><div><strong data-company>AURELIA</strong><small>INTERIOR ARCHITECTURE / MASTER EXPERIENCE</small></div><div class="socials"><span>INSTAGRAM</span><span>PINTEREST</span><span>LINKEDIN</span></div><small>© 2026 — BUILT FOR THE NEXT SCREEN.</small></footer></section>
+  <section class="work" id="projects">
+    <div class="work-head"><span>C / SELECTED WORK</span><h2>Projects that reward<br>a closer look.</h2><p>A selection of spaces shaped around light, restraint and the rituals of everyday life.</p></div>
+    <div class="project-grid" id="projectGrid"></div>
+  </section>
+
+  <section class="process-section">
+    <div class="section-label light">D / PROCESS</div>
+    <div class="process-heading"><h2>From first line<br>to final atmosphere.</h2><p>A calm, deliberate process keeps every decision tied to the feeling of the finished space.</p></div>
+    <div class="process-list">
+      <div class="process-row"><span>01</span><h3>DISCOVER</h3><p>Context, rituals, constraints and ambition.</p></div>
+      <div class="process-row"><span>02</span><h3>DEFINE</h3><p>Spatial logic, light, circulation and material direction.</p></div>
+      <div class="process-row"><span>03</span><h3>DETAIL</h3><p>Joinery, finishes, furniture and precise transitions.</p></div>
+      <div class="process-row"><span>04</span><h3>DELIVER</h3><p>A complete environment with one coherent language.</p></div>
+    </div>
+  </section>
+
+  <section class="services">
+    <span class="kicker">E / SERVICES</span>
+    <div class="service-list">
+      <div class="service"><span>01</span><h3>INTERIOR ARCHITECTURE</h3><svg><use href="#arrow-up-right"/></svg></div>
+      <div class="service"><span>02</span><h3>SPATIAL PLANNING</h3><svg><use href="#arrow-up-right"/></svg></div>
+      <div class="service"><span>03</span><h3>BESPOKE JOINERY</h3><svg><use href="#arrow-up-right"/></svg></div>
+      <div class="service"><span>04</span><h3>MATERIAL DIRECTION</h3><svg><use href="#arrow-up-right"/></svg></div>
+    </div>
+  </section>
+
+  <section class="perspective-section">
+    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=84" alt="Architectural interior with natural light">
+    <div class="perspective-shade"></div>
+    <div class="perspective-copy"><span>F / PERSPECTIVE</span><blockquote>“A room should reveal itself slowly — not all at once.”</blockquote><a href="#contact">Start a conversation <svg><use href="#arrow-right"/></svg></a></div>
+  </section>
+
+  <section class="future">
+    <div class="future-badge">NEXT / SCREEN</div><p>The web is becoming more immersive.</p>
+    <h2>Digital experiences that stand out now — and feel ready for what comes next.</h2>
+    <small>LARGER DISPLAYS · FOLDABLES · SPATIAL INTERFACES</small>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-top"><span>G / START A PROJECT</span><span data-location>LONDON · PARIS · MARBELLA</span></div>
+    <h2>Make your first<br>impression <em>felt.</em></h2>
+    <a class="email" data-email href="mailto:studio@aurelia.design"><span>studio@aurelia.design</span><svg><use href="#arrow-right"/></svg></a>
+    <footer><div><strong data-company>AURELIA</strong><small>INTERIOR ARCHITECTURE / MASTER EXPERIENCE</small></div><div class="socials"><span>INSTAGRAM</span><span>PINTEREST</span><span>LINKEDIN</span></div><small>© 2026 — BUILT FOR THE NEXT SCREEN.</small></footer>
+  </section>
 </main>
 <script src="config.js"></script><script src="script.js"></script>
 </body>
