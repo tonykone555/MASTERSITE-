@@ -1,9 +1,20 @@
 const cfg=window.SITE_CONFIG||{};
+const DEFAULT_VIDEO='https://videos.pexels.com/video-files/7239168/7239168-uhd_2160_3840_25fps.mp4';
+const DEFAULT_POSTER='https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200';
+
 if(cfg.companyName)document.querySelectorAll('[data-company]').forEach(el=>el.textContent=cfg.companyName);
 if(cfg.location)document.querySelectorAll('[data-location]').forEach(el=>el.textContent=cfg.location);
 if(cfg.headline){const el=document.querySelector('[data-headline]');if(el)el.textContent=cfg.headline;}
 if(cfg.intro){const el=document.querySelector('[data-intro]');if(el)el.textContent=cfg.intro;}
 if(cfg.email)document.querySelectorAll('[data-email]').forEach(el=>{el.href='mailto:'+cfg.email;const s=el.querySelector('span');if(s)s.textContent=cfg.email;});
+
+const heroVideo=document.getElementById('heroVideo');
+const tourVideo=document.getElementById('tourVideo');
+const heroSrc=cfg.heroVideo||DEFAULT_VIDEO;
+const tourSrc=cfg.tourVideo||heroSrc;
+heroVideo.src=heroSrc;
+tourVideo.src=tourSrc;
+if(cfg.poster){heroVideo.poster=cfg.poster;tourVideo.poster=cfg.poster;}
 
 const projects=[
 ['https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=82&w=1800','Sculpted living','Material · Light · Art'],
@@ -14,11 +25,71 @@ const projects=[
 ['https://images.unsplash.com/photo-1758448756362-e323282ccbcc?auto=format&fit=crop&fm=jpg&q=82&w=1800','Threshold garden','Stone · Water · Light']
 ];
 const grid=document.getElementById('projectGrid');
-projects.forEach((p,i)=>{const a=document.createElement('article');a.className='project';a.innerHTML=`<div class="photo"><img src="${p[0]}" alt="${p[1]}"><span>${String(i+1).padStart(2,'0')}</span></div><div class="project-copy"><small>PRIVATE RESIDENCE · ${String(i+1).padStart(2,'0')}</small><h3>${p[1]}</h3><p>${p[2]}</p></div>`;grid.appendChild(a)});
+projects.forEach((p,i)=>{const a=document.createElement('article');a.className='project';a.innerHTML=`<div class="photo"><img src="${p[0]}" alt="${p[1]}" loading="lazy"><span>${String(i+1).padStart(2,'0')}</span></div><div class="project-copy"><small>PRIVATE RESIDENCE · ${String(i+1).padStart(2,'0')}</small><h3>${p[1]}</h3><p>${p[2]}</p></div>`;grid.appendChild(a);});
 
-const section=document.querySelector('.tour'),video=document.getElementById('tourVideo'),ambient=document.getElementById('tourAmbient'),progress=document.getElementById('tourProgress'),chapters=[...document.querySelectorAll('.chapter')];
-let target=0,rendered=0,raf=0,active=0;
-function showChapter(next){if(next===active)return;active=next;chapters.forEach((el,i)=>el.classList.toggle('is-active',i===next));}
-function tick(){raf=0;const d=target-rendered;rendered+=d*(Math.abs(d)>.9?.20:.115);if(video.readyState>=2&&Math.abs(video.currentTime-rendered)>.012){try{video.currentTime=rendered}catch{}}if(ambient.readyState>=2&&Math.abs(ambient.currentTime-rendered)>.04){try{ambient.currentTime=rendered}catch{}}if(Math.abs(target-rendered)>.004)raf=requestAnimationFrame(tick)}
-function measure(){const r=section.getBoundingClientRect(),travel=Math.max(1,section.offsetHeight-innerHeight),amount=Math.min(1,Math.max(0,-r.top/travel)),duration=((Number.isFinite(video.duration)&&video.duration>0)?video.duration:16)-.05;target=amount*Math.max(.1,duration);progress.style.transform=`scaleX(${amount})`;showChapter(amount<.31?0:amount<.66?1:2);if(!raf)raf=requestAnimationFrame(tick)}
-function ready(){video.pause();ambient.pause();measure()}video.addEventListener('loadedmetadata',ready);ambient.addEventListener('loadedmetadata',ready);addEventListener('scroll',measure,{passive:true});addEventListener('resize',measure,{passive:true});measure();
+const section=document.querySelector('.tour');
+const progress=document.getElementById('tourProgress');
+const status=document.getElementById('tourStatus');
+const chapters=[...document.querySelectorAll('.chapter')];
+let duration=0,targetTime=0,displayTime=0,raf=0,active=-1,lastWrite=0,videoReady=false;
+
+function chapterFor(amount){
+  if(amount<.24)return 0;
+  if(amount<.49)return 1;
+  if(amount<.74)return 2;
+  return 3;
+}
+function showChapter(next){
+  if(next===active)return;
+  active=next;
+  chapters.forEach((el,i)=>el.classList.toggle('is-active',i===next));
+}
+function scrollAmount(){
+  const rect=section.getBoundingClientRect();
+  const travel=Math.max(1,section.offsetHeight-window.innerHeight);
+  return Math.min(1,Math.max(0,-rect.top/travel));
+}
+function syncTarget(){
+  const amount=scrollAmount();
+  const safeDuration=Math.max(.1,(duration||16)-.08);
+  targetTime=amount*safeDuration;
+  progress.style.transform=`scaleX(${amount})`;
+  showChapter(chapterFor(amount));
+  if(!raf)raf=requestAnimationFrame(render);
+}
+function render(now){
+  raf=0;
+  const diff=targetTime-displayTime;
+  displayTime+=diff*(Math.abs(diff)>1.2?.28:.18);
+
+  if(videoReady&&Number.isFinite(displayTime)){
+    if(now-lastWrite>30||Math.abs(diff)<.03){
+      lastWrite=now;
+      const next=Math.min(Math.max(displayTime,0),Math.max(.1,duration-.06));
+      if(Math.abs(tourVideo.currentTime-next)>.018){
+        try{tourVideo.currentTime=next;}catch{}
+      }
+    }
+  }
+  if(Math.abs(targetTime-displayTime)>.006)raf=requestAnimationFrame(render);
+}
+function markReady(){
+  duration=Number.isFinite(tourVideo.duration)&&tourVideo.duration>0?tourVideo.duration:16;
+  videoReady=true;
+  tourVideo.pause();
+  status.textContent='SCROLL TO EXPLORE';
+  syncTarget();
+}
+tourVideo.addEventListener('loadedmetadata',markReady,{once:true});
+tourVideo.addEventListener('canplay',()=>{if(!videoReady)markReady();},{once:true});
+tourVideo.addEventListener('error',()=>{status.textContent='VIDEO UNAVAILABLE';});
+tourVideo.load();
+
+let scrollTick=0;
+addEventListener('scroll',()=>{
+  if(scrollTick)return;
+  scrollTick=requestAnimationFrame(()=>{scrollTick=0;syncTarget();});
+},{passive:true});
+addEventListener('resize',syncTarget,{passive:true});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){tourVideo.pause();syncTarget();}});
+syncTarget();
