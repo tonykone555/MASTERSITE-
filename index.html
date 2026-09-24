@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="A cinematic interior architecture experience built for the next screen.">
+  <title>AURELIA — Interior Architecture</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="site">
+  <header class="nav">
+    <a class="brand" href="#top"><strong data-company>AURELIA</strong><small>INTERIOR ARCHITECTURE</small></a>
+    <span class="nav-location" data-location>LONDON · PARIS · MARBELLA</span>
+    <nav><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#studio">Studio</a><a href="#contact">Contact</a></nav>
+  </header>
+
+  <section class="hero" id="top">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/hero-poster.jpg" src="assets/hero-motion.mp4"></video>
+    <div class="hero-blur" aria-hidden="true"></div><div class="hero-shade"></div>
+    <span class="eyebrow">RESIDENTIAL · HOSPITALITY · BESPOKE</span><span class="hero-index">01 — 05</span>
+    <div class="hero-copy"><small>INTERIORS / 2026</small><h1 data-headline>Spaces made<br>to be felt.</h1><div class="hero-bottom"><p data-intro>Residential interiors shaped through light, material and movement.</p><a class="enter" href="#experience"><span>Enter the space</span><i>↓</i></a></div></div>
+  </section>
+
+  <section class="approach" id="studio"><span class="kicker">A / APPROACH</span><p class="statement">We design interiors as <em>experiences</em> — composed through proportion, restraint and the way a room reveals itself in motion.</p><div class="approach-grid"><p>Every project begins with atmosphere. We reduce noise, amplify material and let light create the rhythm.</p><p>The result is not a style applied to a space. It is a space that feels inevitable to the people who live inside it.</p></div></section>
+
+  <section class="tour" id="experience">
+    <div class="tour-sticky">
+      <video id="tourAmbient" class="tour-ambient" muted playsinline preload="metadata" src="assets/scroll-tour.mp4"></video>
+      <video id="tourVideo" class="tour-video" muted playsinline preload="auto" poster="assets/tour-poster.jpg" src="assets/scroll-tour.mp4"></video>
+      <div class="tour-vignette"></div><div class="tour-grid"></div>
+      <div class="tour-top"><span>SCROLL-CONTROLLED TOUR</span><span>SCROLL TO EXPLORE</span></div>
+      <div class="chapter is-active" data-chapter="0"><span>01 / ARRIVAL</span><h2>Enter the atmosphere</h2></div>
+      <div class="chapter" data-chapter="1"><span>02 / MATERIAL</span><h2>Move through texture</h2></div>
+      <div class="chapter" data-chapter="2"><span>03 / DETAIL</span><h2>Notice what stays</h2></div>
+      <div class="tour-rail"><span>SCROLL TO MOVE</span><div class="track"><div id="tourProgress" class="progress"></div></div><span>KEEP GOING</span></div>
+    </div>
+  </section>
+
+  <section class="work" id="projects"><div class="work-head"><span>B / SELECTED WORK</span><h2>Projects that reward<br>a closer look.</h2><p>A selection of spaces shaped around light, restraint and the rituals of everyday life.</p></div><div class="project-grid" id="projectGrid"></div></section>
+
+  <section class="services"><span class="kicker">C / SERVICES</span><div class="service-list"><div class="service"><span>01</span><h3>INTERIOR ARCHITECTURE</h3><i>↗</i></div><div class="service"><span>02</span><h3>SPATIAL PLANNING</h3><i>↗</i></div><div class="service"><span>03</span><h3>BESPOKE JOINERY</h3><i>↗</i></div><div class="service"><span>04</span><h3>MATERIAL DIRECTION</h3><i>↗</i></div></div></section>
+
+  <section class="future"><div class="future-badge">NEXT / SCREEN</div><p>The web is becoming more immersive.</p><h2>Digital experiences that stand out now — and feel ready for what comes next.</h2><small>LARGER DISPLAYS · FOLDABLES · SPATIAL INTERFACES</small></section>
+
+  <section class="contact" id="contact"><div class="contact-top"><span>D / START A PROJECT</span><span data-location>LONDON · PARIS · MARBELLA</span></div><h2>Make your first<br>impression <em>felt.</em></h2><a class="email" data-email href="mailto:studio@aurelia.design"><span>studio@aurelia.design</span><i>→</i></a><footer><div><strong data-company>AURELIA</strong><small>INTERIOR ARCHITECTURE / MASTER EXPERIENCE</small></div><div class="socials"><span>INSTAGRAM</span><span>PINTEREST</span><span>LINKEDIN</span></div><small>© 2026 — BUILT FOR THE NEXT SCREEN.</small></footer></section>
+</main>
+<script src="config.js"></script><script src="script.js"></script>
+</body>
+</html>
