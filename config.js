@@ -16,20 +16,23 @@ document.head.appendChild(planSheet);
 
 const surfaceSheet=document.createElement('link');
 surfaceSheet.rel='stylesheet';
-surfaceSheet.href='surface-sections.css?v=floating-slabs-2';
+surfaceSheet.href='surface-sections.css?v=structure-3';
 document.head.appendChild(surfaceSheet);
 
-const objectSheet=document.createElement('link');
-objectSheet.rel='stylesheet';
-objectSheet.href='material-objects.css?v=actual-slabs-1';
-document.head.appendChild(objectSheet);
+const realSlabSheet=document.createElement('link');
+realSlabSheet.rel='stylesheet';
+realSlabSheet.href='real-slab-images.css?v=real-slabs-2';
+document.head.appendChild(realSlabSheet);
 
 setTimeout(()=>{
   const surfaceScript=document.createElement('script');
-  surfaceScript.src='surface-sections.js?v=floating-slabs-2';
+  surfaceScript.src='surface-sections.js?v=structure-3';
+  surfaceScript.async=false;
+  surfaceScript.onload=()=>{
+    const realScript=document.createElement('script');
+    realScript.src='real-slab-runtime.js?v=real-slabs-2';
+    realScript.async=false;
+    document.body.appendChild(realScript);
+  };
   document.body.appendChild(surfaceScript);
-
-  const objectScript=document.createElement('script');
-  objectScript.src='material-objects.js?v=actual-slabs-1';
-  document.body.appendChild(objectScript);
 },0);
