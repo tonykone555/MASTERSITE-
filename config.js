@@ -14,8 +14,8 @@ surfaceSheet.rel='stylesheet';
 surfaceSheet.href='surface-sections.css';
 document.head.appendChild(surfaceSheet);
 
-window.addEventListener('load',()=>{
+setTimeout(()=>{
   const surfaceScript=document.createElement('script');
   surfaceScript.src='surface-sections.js';
   document.body.appendChild(surfaceScript);
-});
+},0);
