@@ -19,13 +19,17 @@ surfaceSheet.rel='stylesheet';
 surfaceSheet.href='surface-sections.css?v=floating-slabs-2';
 document.head.appendChild(surfaceSheet);
 
-const realismSheet=document.createElement('link');
-realismSheet.rel='stylesheet';
-realismSheet.href='slab-realism.css?v=natural-edges-1';
-document.head.appendChild(realismSheet);
+const objectSheet=document.createElement('link');
+objectSheet.rel='stylesheet';
+objectSheet.href='material-objects.css?v=actual-slabs-1';
+document.head.appendChild(objectSheet);
 
 setTimeout(()=>{
   const surfaceScript=document.createElement('script');
   surfaceScript.src='surface-sections.js?v=floating-slabs-2';
   document.body.appendChild(surfaceScript);
+
+  const objectScript=document.createElement('script');
+  objectScript.src='material-objects.js?v=actual-slabs-1';
+  document.body.appendChild(objectScript);
 },0);
