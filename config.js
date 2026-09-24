@@ -9,14 +9,13 @@ window.SITE_CONFIG={
   poster:"https://images.unsplash.com/photo-1758957701419-2c6e266f7988?auto=format&fit=crop&fm=jpg&q=84&w=2200"
 };
 
-/* Load the material-corridor/mobile experience layer after the stable core. */
-const experienceStyles=document.createElement('link');
-experienceStyles.rel='stylesheet';
-experienceStyles.href='experience-fixes.css';
-document.head.appendChild(experienceStyles);
+const surfaceSheet=document.createElement('link');
+surfaceSheet.rel='stylesheet';
+surfaceSheet.href='surface-sections.css';
+document.head.appendChild(surfaceSheet);
+
 window.addEventListener('load',()=>{
-  const experienceScript=document.createElement('script');
-  experienceScript.src='mobile-experience.js';
-  experienceScript.defer=true;
-  document.body.appendChild(experienceScript);
-},{once:true});
+  const surfaceScript=document.createElement('script');
+  surfaceScript.src='surface-sections.js';
+  document.body.appendChild(surfaceScript);
+});
